@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolatore Estrazione & Macerazione Botanica - Dedicated to Charles Flamminio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #111111;
+        }
+        .font-mono-custom {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .editorial-shadow {
+            box-shadow: 4px 4px 0px 0px #111111;
+        }
+        .editorial-shadow-orange {
+            box-shadow: 4px 4px 0px 0px #FF6B00;
+        }
+        .editorial-border {
+            border: 2px solid #111111;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-[#FF6B00] selection:text-white">
+
+    <!-- Header / Top Bar -->
+    <header class="w-full border-b-2 border-black py-4 px-4 sm:px-8 bg-white sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <span class="bg-black text-white font-mono-custom text-xs sm:text-sm px-3 py-1 font-bold tracking-wider">EDIZIONE SPECIALE</span>
+                <span class="text-xs sm:text-sm font-bold uppercase tracking-widest text-neutral-600">BOTANICA & INFUSI • CHARLES FLAMMINIO EDITION</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <button id="openGuideBtnHeader" class="bg-white hover:bg-neutral-100 text-black font-extrabold text-xs sm:text-sm px-3 py-1 uppercase border-2 border-black editorial-shadow flex items-center gap-1.5 transition-all">
+                    <span>📖</span> GUIDA UTENTE
+                </button>
+                <span class="bg-[#FF6B00] text-white font-mono-custom text-xs sm:text-sm px-3 py-1 font-extrabold tracking-wider uppercase border-2 border-black editorial-shadow">100% TESTATO</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <main class="max-w-4xl w-full mx-auto px-4 sm:px-6 py-8 sm:py-12 flex-grow">
+        
+        <!-- Heading -->
+        <div class="mb-10 text-center sm:text-left flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+                <div class="inline-block mb-3">
+                    <span class="text-xs font-bold tracking-widest text-[#FF6B00] uppercase border-b-2 border-[#FF6B00] pb-1">MANUALE DI ESTRAZIONE & MACERAZIONE</span>
+                </div>
+                <h1 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#111111] mb-2">
+                    CALCOLATORE <span class="text-[#FF6B00]">BOTANICHE & INFUSI</span>
+                </h1>
+                <p class="text-neutral-600 text-base sm:text-lg max-w-2xl font-medium">
+                    Strumento di precisione per il calcolo del rapporto di estrazione (Ratio), perdita da assorbimento vegetale e volume netto per tinture, liquori erboristici e sciroppi aromatismi.
+                </p>
+            </div>
+        </div>
+
+        <!-- Calculator Layout Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Inputs -->
+            <div class="lg:col-span-7 editorial-border bg-white p-6 sm:p-8 editorial-shadow">
+                <div class="flex items-center justify-between mb-6 pb-4 border-b-2 border-black">
+                    <h2 class="text-xl font-extrabold uppercase tracking-wide flex items-center gap-2">
+                        <span class="w-3 h-3 bg-[#FF6B00] inline-block border border-black"></span>
+                        Parametri di Macerazione
+                    </h2>
+                    <button id="openGuideBtn" class="text-xs font-bold uppercase text-[#FF6B00] hover:underline flex items-center gap-1">
+                        <span>❓</span> Come Usare
+                    </button>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Peso Botaniche / Tè / Spezie (g) -->
+                    <div>
+                        <label for="botanicalWeight" class="block text-sm font-bold uppercase tracking-wide mb-2">
+                            Peso Botanica / Spezia / Tè (g)
+                        </label>
+                        <div class="relative">
+                            <input type="number" id="botanicalWeight" value="50" step="1" min="1" 
+                                class="w-full px-4 py-3 editorial-border font-mono-custom text-lg font-bold bg-neutral-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#FF6B00]">
+                            <span class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none font-bold text-neutral-500">g</span>
+                        </div>
+                        <p class="text-xs text-neutral-500 mt-1">Peso secco delle erbe, spezie, radici o foglie di tè impiegate.</p>
+                    </div>
+
+                    <!-- Volume Solvente / Liquido Iniziale (ml) -->
+                    <div>
+                        <label for="liquidVolume" class="block text-sm font-bold uppercase tracking-wide mb-2">
+                            Volume Solvente / Liquido Iniziale (ml)
+                        </label>
+                        <div class="relative">
+                            <input type="number" id="liquidVolume" value="500" step="10" min="10" 
+                                class="w-full px-4 py-3 editorial-border font-mono-custom text-lg font-bold bg-neutral-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#FF6B00]">
+                            <span class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none font-bold text-neutral-500">ml</span>
+                        </div>
+                        <p class="text-xs text-neutral-500 mt-1">Volume dell'alcol, acqua, olio o sciroppo base.</p>
+                    </div>
+
+                    <!-- Tipo di Botanica (Assorbimento) -->
+                    <div>
+                        <label for="botanicalType" class="block text-sm font-bold uppercase tracking-wide mb-2">
+                            Tipologia di Matrice Vegetale
+                        </label>
+                        <select id="botanicalType" class="w-full px-4 py-3 editorial-border font-mono-custom text-lg font-bold bg-neutral-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#FF6B00]">
+                            <option value="1.5" selected>Foglie di Tè / Fiori secchi (Assorbimento ~1.5 ml/g)</option>
+                            <option value="2.5">Erbe aromatiche / Radici / Bacche (Assorbimento ~2.5 ml/g)</option>
+                            <option value="0.8">Scorze di Agrumi / Spezie dure (Assorbimento ~0.8 ml/g)</option>
+                        </select>
+                        <p class="text-xs text-neutral-500 mt-1">Definisce la quantità di liquido trattenuta dal vegetale a fine filtrazione.</p>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="pt-4 flex flex-col sm:flex-row gap-4">
+                        <button id="resetBtn" class="flex-1 bg-neutral-100 hover:bg-neutral-200 text-black font-extrabold uppercase py-3 px-4 editorial-border transition-all duration-150 active:translate-y-0.5">
+                            Resetta Valori
+                        </button>
+                        <button id="copyBtn" class="flex-1 bg-[#FF6B00] hover:bg-[#e05e00] text-white font-extrabold uppercase py-3 px-4 editorial-border editorial-shadow transition-all duration-150 active:translate-y-0.5">
+                            Copia Risultati
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Outputs -->
+            <div class="lg:col-span-5 editorial-border bg-neutral-900 text-white p-6 sm:p-8 editorial-shadow-orange flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-6 pb-4 border-b-2 border-neutral-700">
+                        <h2 class="text-xl font-extrabold uppercase tracking-wide flex items-center gap-2 text-white">
+                            <span class="w-3 h-3 bg-emerald-400 inline-block border border-black" id="semaforoDot"></span>
+                            Risultati Estratto
+                        </h2>
+                        <span class="text-xs font-mono-custom text-[#FF6B00] font-bold">ANALISI LIVE</span>
+                    </div>
+
+                    <!-- Status Badge -->
+                    <div id="statusBadge" class="mb-6 p-4 editorial-border bg-emerald-500/10 border-emerald-500 text-emerald-400 flex items-center gap-3">
+                        <div id="statusIndicatorIcon" class="w-4 h-4 rounded-full bg-emerald-500 animate-pulse"></div>
+                        <div>
+                            <div class="text-xs font-bold uppercase tracking-wider text-neutral-400">Concentrazione Estratto</div>
+                            <div id="statusText" class="text-base font-extrabold uppercase tracking-wide">RAPPORTO BILANCIATO (1:10)</div>
+                        </div>
+                    </div>
+
+                    <!-- Display List -->
+                    <div class="space-y-4">
+                        <div class="bg-neutral-800 p-4 editorial-border border-neutral-700 flex justify-between items-center">
+                            <div>
+                                <span class="text-xs text-neutral-400 uppercase font-bold block">Rapporto Estrazione (Ratio)</span>
+                                <span class="text-xs text-neutral-500 font-mono-custom">(Materia Prima : Solvente)</span>
+                            </div>
+                            <span id="outRatio" class="text-2xl font-black font-mono-custom text-[#FF6B00]">1:10</span>
+                        </div>
+
+                        <div class="bg-neutral-800 p-4 editorial-border border-neutral-700 flex justify-between items-center">
+                            <div>
+                                <span class="text-xs text-neutral-400 uppercase font-bold block">Liquido Trattenuto (Scarto)</span>
+                                <span class="text-xs text-neutral-500 font-mono-custom">Assorbito dalle botaniche</span>
+                            </div>
+                            <span id="outAbsorbedMl" class="text-2xl font-black font-mono-custom text-white">75 ml</span>
+                        </div>
+
+                        <div class="bg-neutral-800 p-4 editorial-border border-neutral-700 flex justify-between items-center">
+                            <div>
+                                <span class="text-xs text-neutral-400 uppercase font-bold block">Volume Netto Filtrato</span>
+                                <span class="text-xs text-neutral-500 font-mono-custom">Resa finale in flacone</span>
+                            </div>
+                            <span id="outNetVolume" class="text-2xl font-black font-mono-custom text-white">425 ml</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-4 border-t border-neutral-700 text-xs text-neutral-400 text-center font-mono-custom">
+                    DEDICATO A CHARLES FLAMMINIO • VBG © 2026
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-black text-white px-6 py-3 editorial-border editorial-shadow font-bold text-sm transform translate-y-24 opacity-0 transition-all duration-300 z-50 flex items-center gap-3">
+        <span class="w-2.5 h-2.5 bg-[#FF6B00] rounded-full inline-block"></span>
+        <span id="toastMessage">Risultati copiati negli appunti!</span>
+    </div>
+
+    <!-- Modale Guida Utente -->
+    <div id="guideModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-200">
+        <div id="guideModalContainer" class="bg-white max-w-2xl w-full max-h-[85vh] overflow-y-auto editorial-border editorial-shadow p-6 sm:p-8 transform scale-95 transition-transform duration-200 flex flex-col justify-between">
+            <div>
+                <div class="flex justify-between items-center pb-4 mb-6 border-b-2 border-black">
+                    <div class="flex items-center gap-2">
+                        <span class="bg-[#FF6B00] text-white font-mono-custom text-xs px-2 py-0.5 font-black uppercase">MANUALE TECNICO</span>
+                        <h3 class="text-2xl font-black uppercase tracking-tight text-black">GUIDA ALLA MACERAZIONE & INFUSIONI</h3>
+                    </div>
+                    <button id="closeGuideBtn" class="w-8 h-8 bg-black text-white hover:bg-[#FF6B00] font-black text-lg editorial-border flex items-center justify-center transition-colors">
+                        ✕
+                    </button>
+                </div>
+
+                <div class="space-y-6 text-neutral-800 text-sm">
+                    <div class="border-l-4 border-black pl-4 py-1">
+                        <h4 class="font-extrabold uppercase text-base text-black mb-1">1. Che cos'è il Rapporto di Estrazione (Ratio)?</h4>
+                        <p class="text-neutral-700">Il rapporto tra grammi di ingrediente secco e millilitri di solvente determina l'intensità e l'armonia dell'estratto:</p>
+                        <ul class="mt-2 space-y-1 text-xs">
+                            <li><strong>• Ratio 1:1 a 1:5:</strong> Tinture madri, concentrati ad altissima intensità o bitter erboristici.</li>
+                            <li><strong>• Ratio 1:8 a 1:12:</strong> Rapporto bilanciato ideale per liquori artigianali, infusioni di tè e cordiali.</li>
+                            <li><strong>• Ratio 1:15+:</strong> Infusioni leggere o aromatizzazioni delicate per premix.</li>
+                        </ul>
+                    </div>
+
+                    <div class="border-l-4 border-[#FF6B00] pl-4 py-1">
+                        <h4 class="font-extrabold uppercase text-base text-black mb-1">2. Calcolo della Resa Netta e Assorbimento</h4>
+                        <p class="text-neutral-700">Ogni matrice vegetale (fiori, radici, scorze) trattiene inevitabilmente una parte del liquido estratto dopo la torchiatura o chiarificazione. Il calcolatore detrae automaticamente questo valore per darti la precisa resa in flacone.</p>
+                    </div>
+
+                    <div class="border-l-4 border-emerald-500 pl-4 py-1 bg-neutral-50 p-3 editorial-border">
+                        <h4 class="font-extrabold uppercase text-base text-black mb-2">3. Significato degli Indicatori</h4>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3.5 h-3.5 rounded-full bg-emerald-500 border border-black inline-block"></span>
+                                <span class="font-extrabold text-emerald-700 uppercase text-xs">VERDE (Ratio 1:8 - 1:12):</span>
+                                <span class="text-xs font-medium">Equilibrio armonico per elisir e liquori.</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-3.5 h-3.5 rounded-full bg-amber-400 border border-black inline-block"></span>
+                                <span class="font-extrabold text-amber-700 uppercase text-xs">ARANCIONE (Ratio 1:4 - 1:7):</span>
+                                <span class="text-xs font-medium">Estratto concentrato o tintura ad alto impatto.</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-3.5 h-3.5 rounded-full bg-rose-500 border border-black inline-block"></span>
+                                <span class="font-extrabold text-rose-700 uppercase text-xs">ROSSO (Ratio < 1:4 o > 1:15):</span>
+                                <span class="text-xs font-medium">Estrazione estremamente satura o molto diluita.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-4 border-t-2 border-black flex justify-between items-center">
+                <span class="text-xs font-mono-custom text-neutral-500">Premi ESC per chiudere</span>
+                <button id="closeGuideBtnFooter" class="bg-black hover:bg-[#FF6B00] text-white font-extrabold uppercase text-xs py-2.5 px-6 editorial-border transition-colors">
+                    Ho Capito
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w-full border-t-2 border-black bg-white py-6 px-4 text-center">
+        <p class="text-xs font-bold uppercase tracking-widest text-neutral-700">
+            Dedicato a Charles Flamminio • Laboratorio di Mixology & Botanica Sensoriale
+        </p>
+    </footer>
+
+    <!-- Script Logic -->
+    <script>
+        const botanicalWeightInput = document.getElementById('botanicalWeight');
+        const liquidVolumeInput = document.getElementById('liquidVolume');
+        const botanicalTypeSelect = document.getElementById('botanicalType');
+
+        const outRatio = document.getElementById('outRatio');
+        const outAbsorbedMl = document.getElementById('outAbsorbedMl');
+        const outNetVolume = document.getElementById('outNetVolume');
+
+        const statusBadge = document.getElementById('statusBadge');
+        const statusIndicatorIcon = document.getElementById('statusIndicatorIcon');
+        const statusText = document.getElementById('statusText');
+        const semaforoDot = document.getElementById('semaforoDot');
+
+        const resetBtn = document.getElementById('resetBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+
+        // Modal Elements
+        const guideModal = document.getElementById('guideModal');
+        const guideModalContainer = document.getElementById('guideModalContainer');
+        const openGuideBtnHeader = document.getElementById('openGuideBtnHeader');
+        const openGuideBtn = document.getElementById('openGuideBtn');
+        const closeGuideBtn = document.getElementById('closeGuideBtn');
+        const closeGuideBtnFooter = document.getElementById('closeGuideBtnFooter');
+
+        function openModal() {
+            guideModal.classList.remove('opacity-0', 'pointer-events-none');
+            guideModalContainer.classList.remove('scale-95');
+            guideModalContainer.classList.add('scale-100');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            guideModal.classList.add('opacity-0', 'pointer-events-none');
+            guideModalContainer.classList.remove('scale-100');
+            guideModalContainer.classList.add('scale-95');
+            document.body.style.overflow = '';
+        }
+
+        openGuideBtnHeader.addEventListener('click', openModal);
+        openGuideBtn.addEventListener('click', openModal);
+        closeGuideBtn.addEventListener('click', closeModal);
+        closeGuideBtnFooter.addEventListener('click', closeModal);
+
+        guideModal.addEventListener('click', (e) => {
+            if (!guideModalContainer.contains(e.target)) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !guideModal.classList.contains('pointer-events-none')) closeModal();
+        });
+
+        function calculate() {
+            const weight = parseFloat(botanicalWeightInput.value) || 0;
+            const volume = parseFloat(liquidVolumeInput.value) || 0;
+            const absorptionFactor = parseFloat(botanicalTypeSelect.value) || 1.5;
+
+            const ratioVal = weight > 0 ? (volume / weight) : 0;
+            const absorbedVolume = weight * absorptionFactor;
+            const netVolume = Math.max(0, volume - absorbedVolume);
+
+            outRatio.textContent = `1:${ratioVal.toFixed(1)}`;
+            outAbsorbedMl.textContent = `${Math.round(absorbedVolume)} ml`;
+            outNetVolume.textContent = `${Math.round(netVolume)} ml`;
+
+            // Status Indicator Logic
+            statusBadge.className = "mb-6 p-4 editorial-border flex items-center gap-3 transition-colors duration-300";
+
+            if (ratioVal >= 8 && ratioVal <= 12) {
+                statusBadge.classList.add('bg-emerald-500/10', 'border-emerald-500', 'text-emerald-400');
+                statusIndicatorIcon.className = "w-4 h-4 rounded-full bg-emerald-500 animate-pulse";
+                semaforoDot.className = "w-3 h-3 bg-emerald-400 inline-block border border-black";
+                statusText.textContent = `RAPPORTO BILANCIATO (1:${ratioVal.toFixed(1)})`;
+            } else if ((ratioVal >= 4 && ratioVal < 8) || (ratioVal > 12 && ratioVal <= 15)) {
+                statusBadge.classList.add('bg-amber-500/10', 'border-amber-500', 'text-amber-400');
+                statusIndicatorIcon.className = "w-4 h-4 rounded-full bg-amber-500 animate-pulse";
+                semaforoDot.className = "w-3 h-3 bg-amber-400 inline-block border border-black";
+                statusText.textContent = `CONCENTRATO / INTENSO (1:${ratioVal.toFixed(1)})`;
+            } else {
+                statusBadge.classList.add('bg-rose-500/10', 'border-rose-500', 'text-rose-400');
+                statusIndicatorIcon.className = "w-4 h-4 rounded-full bg-rose-500 animate-pulse";
+                semaforoDot.className = "w-3 h-3 bg-rose-500 inline-block border border-black";
+                statusText.textContent = `MOLTO SATURO O DILUITO (1:${ratioVal.toFixed(1)})`;
+            }
+        }
+
+        botanicalWeightInput.addEventListener('input', calculate);
+        liquidVolumeInput.addEventListener('input', calculate);
+        botanicalTypeSelect.addEventListener('change', calculate);
+
+        resetBtn.addEventListener('click', () => {
+            botanicalWeightInput.value = "50";
+            liquidVolumeInput.value = "500";
+            botanicalTypeSelect.value = "1.5";
+            calculate();
+            showToast("Valori ripristinati!");
+        });
+
+        copyBtn.addEventListener('click', () => {
+            const weight = parseFloat(botanicalWeightInput.value) || 0;
+            const volume = parseFloat(liquidVolumeInput.value) || 0;
+            const absorptionFactor = parseFloat(botanicalTypeSelect.value) || 1.5;
+            const ratioVal = weight > 0 ? (volume / weight) : 0;
+            const absorbedVolume = weight * absorptionFactor;
+            const netVolume = Math.max(0, volume - absorbedVolume);
+
+            const textToCopy = `🌿 CALCOLATORE ESTRAZIONE BOTANICA (ED. CHARLES FLAMMINIO)\n` +
+                               `- Peso Botanica: ${weight} g\n` +
+                               `- Liquido Iniziale: ${volume} ml\n` +
+                               `- Ratio Estrazione: 1:${ratioVal.toFixed(1)}\n` +
+                               `- Scarto Assorbito: ~${Math.round(absorbedVolume)} ml\n` +
+                               `- Resa Netta Filtrata: ~${Math.round(netVolume)} ml`;
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    showToast("Report copiato negli appunti!");
+                }).catch(() => {
+                    fallbackCopyText(textToCopy);
+                });
+            } else {
+                fallbackCopyText(textToCopy);
+            }
+        });
+
+        function fallbackCopyText(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast("Report copiato negli appunti!");
+            } catch (err) {
+                showToast("Errore durante la copia.");
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function showToast(msg) {
+            toastMessage.textContent = msg;
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3000);
+        }
+
+        window.onload = function() {
+            calculate();
+        };
+    </script>
+</body>
+</html>
